@@ -6,6 +6,10 @@
 </head>
 <body>
 <h1> Users</h1>
+<a href="javascript: document.logoutForm.submit()" role="menuitem"> Logout</a>
+<form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
+    <input hidden type="submit" value="Sign Out"/>
+</form>
 <table border="1">
     <tr style="color: indianred">
         <th>Id</th>

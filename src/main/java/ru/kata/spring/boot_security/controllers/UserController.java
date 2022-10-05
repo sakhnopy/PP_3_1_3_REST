@@ -1,5 +1,6 @@
 package ru.kata.spring.boot_security.controllers;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,8 +20,8 @@ public class UserController {
     }
 
     @GetMapping("/user")
-    public String userPage(Model model, @PathVariable("id") Integer id) {
-        model.addAttribute("user", userService.getUserById(id));
+    public String userPage(Model model, @AuthenticationPrincipal User user) {
+        model.addAttribute("user", user);
         return "user/user";
     }
 }
