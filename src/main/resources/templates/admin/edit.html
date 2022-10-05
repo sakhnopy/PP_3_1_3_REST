@@ -7,16 +7,31 @@
 
 <body>
 
-<form th:method="PATCH" th:action="@{/user/{id}(id=${user.getId()})}" th:object="${user}">
+<form th:method="PATCH" th:action="@{/admin/{id}(id=${user.getId()})}" th:object="${user}">
     <label for="name">Enter name: </label>
     <input type="text" th:field="*{name}" id="name"/>
     <br/>
-    <label for="lastname">Enter lastname </label>
+    <label for="lastname">Enter lastname: </label>
     <input type="text" th:field="*{lastname}" id="lastname"/>
     <br/>
+    <label for="username">Enter username</label>
+    <input type="text" th:field="*{username}" id = "username"/>
+    <br/>
+    <label for="password">Enter password</label>
+    <input type="text" th:field="*{password}" id = "password"/>
+    <br/>
+    <table>
+        <tr>
+            <th th:align="left">Select Role</th>
+            <td th:each="role : ${allRoles}">
+                <label for="rolesId"></label>
+                <input name="rolesId" type="checkbox" th:text="${role.getName()}" id="rolesId" th:value="${role.id}"/>
+            </td>
+        </tr>
+    </table>
     <input type="submit" value="Update!"/>
 </form>
 <hr/>
-<a href="/user/">to Index</a>
+<a href="/admin/users">to Index</a>
 </body>
 </html>

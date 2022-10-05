@@ -2,12 +2,12 @@ package ru.kata.spring.boot_security;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-public class SpringBootSecurityApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootSecurityApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
-
 }

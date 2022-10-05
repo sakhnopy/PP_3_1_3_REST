@@ -10,7 +10,7 @@ import java.util.Set;
 public class Role implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     @Column(name = "name")
     private String name;
     @Transient
@@ -28,11 +28,12 @@ public class Role implements GrantedAuthority {
         this.id = id;
     }
 
-    public int getId() {
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -56,4 +57,6 @@ public class Role implements GrantedAuthority {
     public String getAuthority() {
         return getName();
     }
+
+
 }

@@ -15,15 +15,15 @@
     <tr>
     <tr th:each="user : ${users}">
         <td th:utext="${user.getId()}"></td>
-        <td th:utext="${user.getName()}"></td>
+        <td th:utext="${user.getName}"></td>
         <td th:utext="${user.getLastname()}"></td>
         <td>
-            <form th:method="DELETE" th:action="@{/user/{id}(id=${user.getId()})}">
+            <form th:method="DELETE" th:action="@{/admin/{id}(id=${user.getId()})}">
                 <input type="submit" value="Delete"/>
             </form>
         </td>
         <td>
-            <a th:href="@{/user/{id}/edit(id=${user.getId()})}">Edit</a>
+            <a th:href="@{/admin/{id}/edit(id=${user.getId()})}">Edit</a>
         </td>
     </tr>
 </table>
@@ -31,7 +31,7 @@
 <br/>
 <br>
 <hr/>
-<a th:href="@{/user/new}">Create New User</a>
+<a th:href="@{/admin/new}">Create New User</a>
 
 </body>
 </html>

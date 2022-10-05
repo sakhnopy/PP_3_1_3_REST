@@ -3,34 +3,41 @@ package ru.kata.spring.boot_security.service;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.kata.spring.boot_security.dao.UserDAO;
-import ru.kata.spring.boot_security.model.Role;
 import ru.kata.spring.boot_security.model.User;
-
-
 import javax.transaction.Transactional;
-import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
+
 
 @Service
-public class UserServiceImpl implements UserService, UserDetailsService {
+public class UserServiceImpl implements UserService{
+
+    private PasswordEncoder passwordEncoder;
     private final UserDAO userDAO;
 
-    public UserServiceImpl(UserDAO userDAO) {
+    public UserServiceImpl(PasswordEncoder passwordEncoder, UserDAO userDAO) {
+        this.passwordEncoder = passwordEncoder;
         this.userDAO = userDAO;
     }
+
     @Transactional
     @Override
     public void save(User user) {
-        User userFromDB = userDAO.getUserByUsername(user.getUsername());
-        userFromDB.setRoles(Collections.singleton(new Role(1, "ROLE_USER")));
-        userFromDB.setPassword(user.getPassword());
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userDAO.save(user);
     }
     @Transactional
     @Override
     public void updateUser(User update) {
+        if (!update.getPassword().equals(Objects.requireNonNull(userDAO.getUserById(update.getId())).getPassword())){
+            update.setPassword(passwordEncoder.encode(update.getPassword()));
+        }else {
+            update.setPassword(Objects.requireNonNull(userDAO.getUserById(update.getId())).getPassword());
+        }
         userDAO.updateUser(update);
     }
     @Transactional
@@ -63,4 +70,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         }
         return user;
     }
+
+
 }

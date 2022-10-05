@@ -8,9 +8,9 @@ import java.util.List;
 public interface UserDAO {
     void save(User user);
     void updateUser(User update);
-    void removeUserById(int id);
+    void removeUserById(Integer id);
     List<User> getAllUsers();
-    User getUserById(int id);
+    User getUserById(Integer id);
     User getUserByUsername(String username);
 }
 

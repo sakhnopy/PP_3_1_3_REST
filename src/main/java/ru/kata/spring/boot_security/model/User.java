@@ -1,5 +1,7 @@
 package ru.kata.spring.boot_security.model;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -13,7 +15,11 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Integer id;
+    @Column(name = "name")
+    private String name;
+    @Column(name = "lastname")
+    private String lastname;
     @Column(name = "username")
     private String username;
     @Column(name = "password")
@@ -22,13 +28,8 @@ public class User implements UserDetails {
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @Fetch(FetchMode.JOIN)
     private Set<Role> roles;
-    private String passwordConfirm;
-
-    @Transient
-    public String getPasswordConfirm() {
-        return passwordConfirm;
-    }
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
@@ -39,19 +40,31 @@ public class User implements UserDetails {
     }
 
 
-    public void setPasswordConfirm(String passwordConfirm) {
-        this.passwordConfirm = passwordConfirm;
-    }
-
     public User() {
     }
 
 
-    public int getId() {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
