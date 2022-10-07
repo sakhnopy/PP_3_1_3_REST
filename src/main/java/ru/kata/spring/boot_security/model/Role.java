@@ -19,14 +19,10 @@ public class Role implements GrantedAuthority {
 
     public Role() {}
 
-    public Role(int id, String name) {
-        this.id = id;
+    public Role(String name) {
         this.name = name;
     }
 
-    public Role(int id) {
-        this.id = id;
-    }
 
 
     public Integer getId() {
