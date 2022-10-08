@@ -14,13 +14,11 @@ public class RoleDAOImpl implements RoleDAO {
     private EntityManager entityManager;
 
     @Override
-    @Transactional
     public void saveRole(Role role) {
         entityManager.persist(role);
     }
 
     @Override
-    @Transactional
     public List<Role> getAllRoles() {
         TypedQuery<Role> typedQuery = entityManager.createQuery("select r from Role r", Role.class);
         return typedQuery.getResultList();

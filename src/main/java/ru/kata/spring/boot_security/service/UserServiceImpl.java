@@ -45,17 +45,17 @@ public class UserServiceImpl implements UserService{
     public void removeUserById(int id) {
         userDAO.removeUserById(id);
     }
-    @Transactional
+
     @Override
     public List<User> getAllUsers() {
         return userDAO.getAllUsers();
     }
-    @Transactional
+
     @Override
     public User getUserById(int id) {
         return userDAO.getUserById(id);
     }
-    @Transactional
+
     @Override
     public User getUserByUsername(String username) {
         return userDAO.getUserByUsername(username);

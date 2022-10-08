@@ -14,15 +14,15 @@ import java.util.Set;
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+
     private Integer id;
-    @Column(name = "name")
+
     private String name;
-    @Column(name = "lastname")
+
     private String lastname;
-    @Column(name = "username")
+
     private String username;
-    @Column(name = "password")
+
     private String password;
     @ManyToMany(fetch = FetchType.LAZY , cascade = CascadeType.MERGE)
     @JoinTable(name = "users_roles",

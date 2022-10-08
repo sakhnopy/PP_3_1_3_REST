@@ -30,10 +30,14 @@
     <table>
     <tr>
         <th th:align="left">Select Role</th>
-        <td th:each="role : ${allRoles}">
-            <label for="rolesId"></label>
-            <input name="rolesId" type="checkbox" th:text="${role.getName()}" id="rolesId" th:value="${role.id}"/>
-        </td>
+<!--        <td th:each="role : ${allRoles}">-->
+<!--            <label for="rolesId"></label>-->
+<!--            <input name="rolesId" type="checkbox" th:text="${role.getName()}" id="rolesId" th:value="${role.id}"/>-->
+<!--        </td>-->
+        <select multiple aria-label="roll" size="2" required="true" id="rolesId" name="rolesId">
+            <option th:text="USER" th:value="1"></option>
+            <option th:text="ADMIN" th:value="2"></option>
+        </select>
     </tr>
     </table>
     <input type="submit" value="Create!"/>

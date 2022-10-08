@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import ru.kata.spring.boot_security.dao.RoleDAO;
 import ru.kata.spring.boot_security.model.Role;
 
+import javax.transaction.Transactional;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -16,6 +17,7 @@ public class RoleServiceImpl implements RoleService{
         this.roleDAO = roleDAO;
     }
 
+    @Transactional
     @Override
     public void addRole(Role role) {
         roleDAO.saveRole(role);
