@@ -2,11 +2,8 @@ package ru.kata.spring.boot_security.dao;
 
 import org.springframework.stereotype.Repository;
 import ru.kata.spring.boot_security.model.User;
-
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 import java.util.List;
 
 

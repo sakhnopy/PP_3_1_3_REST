@@ -12,7 +12,6 @@ import java.util.Set;
 public class RoleServiceImpl implements RoleService{
 
     private final RoleDAO roleDAO;
-
     public RoleServiceImpl(RoleDAO roleDAO) {
         this.roleDAO = roleDAO;
     }
@@ -37,5 +36,10 @@ public class RoleServiceImpl implements RoleService{
             }
         }
         return roles;
+    }
+
+    @Override
+    public Role getRole(String name) {
+        return roleDAO.getRole(name);
     }
 }

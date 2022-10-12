@@ -6,8 +6,8 @@ import ru.kata.spring.boot_security.model.Role;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import javax.transaction.Transactional;
 import java.util.List;
+
 @Component
 public class RoleDAOImpl implements RoleDAO {
     @PersistenceContext
@@ -22,5 +22,10 @@ public class RoleDAOImpl implements RoleDAO {
     public List<Role> getAllRoles() {
         TypedQuery<Role> typedQuery = entityManager.createQuery("select r from Role r", Role.class);
         return typedQuery.getResultList();
+    }
+    @Override
+    public Role getRole(String name) {
+        return entityManager.createQuery("select r from Role r where r.name =: name", Role.class)
+                .setParameter("name", name).getSingleResult();
     }
 }

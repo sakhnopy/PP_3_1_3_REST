@@ -9,4 +9,5 @@ public interface RoleService {
     void addRole(Role role);
     List<Role> getAllRoles();
     Set<Role> findRoleById(String roleId);
+    Role getRole(String name);
 }
