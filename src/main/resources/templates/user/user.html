@@ -29,6 +29,12 @@
         <div class="col-2 p-0">
             <div class="nav flex-column nav-pills pt-4" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <a class="nav-link active" th:href="@{/user}">User</a>
+                <div sec:authorize="hasRole('ROLE_ADMIN')">
+                <a class="nav-link" th:href="@{/admin/users}">Admin</a>
+            </div>
+
+
+
             </div>
         </div>
 

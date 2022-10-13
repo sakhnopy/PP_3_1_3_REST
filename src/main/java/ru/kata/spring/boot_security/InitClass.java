@@ -42,7 +42,6 @@ public class InitClass {
 
         Set<Role> roleSu = new HashSet<>();
 
-        roleSu.add(user);
         roleSu.add(admin);
         User user2 = new User();
         user2.setName("admin");
