@@ -3,7 +3,6 @@ package ru.kata.spring.boot_security.service;
 import org.springframework.stereotype.Service;
 import ru.kata.spring.boot_security.dao.RoleDAO;
 import ru.kata.spring.boot_security.model.Role;
-
 import javax.transaction.Transactional;
 import java.util.HashSet;
 import java.util.List;
