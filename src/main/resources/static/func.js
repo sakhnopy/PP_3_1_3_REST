@@ -120,7 +120,6 @@ export function createNewUser(e) {
             if (response.ok) {
                 newUserForm.reset()
                 fillUsersTable()
-                getSuccessMessage('Пользователь создан успешно!')
                 $('.nav-tabs a[href="#UserTable"]').tab('show')
             } else {
                 response.json()
@@ -203,7 +202,6 @@ export function updateCurrentUser(e) {
                 fillUsersTable()
                 userEditForm.password.value = ''
                 document.getElementById('closeEditModalWindow').click()
-                getSuccessMessage('Пользователь успешно изменен!')
                 $('.nav-tabs a[href="#UserTable"]').tab('show')
             } else {
                 response.json()
@@ -225,7 +223,6 @@ export function deleteCurrentUser(id) {
     }).then(() => {
         fillUsersTable()
         document.getElementById('closeDeleteModal').click()
-        getSuccessMessage('Пользователь успешно удален!')
         $('.nav-tabs a[href="#UserTable"]').tab('show')
     })
 }
